@@ -10,7 +10,6 @@ namespace ControledeEstoqueWPF.Models
     {
         public string Nome { get; set; }
         public int Quantidade { get; set; }
-        public int EstoqueMax { get; set; }
-        public int EstoqueMin { get; set; }
+
     }
 }

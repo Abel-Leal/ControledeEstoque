@@ -11,5 +11,6 @@ namespace ControledeEstoqueWPF.Models
         public ItemSolicitacao() => Produto = new Produto();
         public Produto Produto { get; set; }
         public int Quantidade { get; set; }
+
     }
 }

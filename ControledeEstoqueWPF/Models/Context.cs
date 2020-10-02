@@ -12,7 +12,7 @@ namespace ControledeEstoqueWPF.Models
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Solicitacao> Solicitacoes { get; set; }
         public DbSet<ItemSolicitacao> ItensSolicitacao { get; set; }
-        public DbSet<EntradaProdutoEstoque> EntradaProdutos { get; set; }
+        public DbSet<EntradaProdutoEstoque> EntradaProdutoEstoque { get; set; }
         public DbSet<Saida> SaidaProdutos { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

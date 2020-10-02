@@ -16,6 +16,6 @@ namespace ControledeEstoqueWPF.Models
         public Solicitacao Solicitacao { get; set; }
         public List<Produto> Produtos { get; set; }
         public int QtdeProdutoEntrada { get; set; }
-        public int QtdeDisponivel { get; set; }
+
     }
 }

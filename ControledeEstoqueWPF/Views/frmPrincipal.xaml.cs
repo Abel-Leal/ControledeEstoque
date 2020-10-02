@@ -40,5 +40,11 @@ namespace ControledeEstoqueWPF.Views
             frmCadastrarProduto frm = new frmCadastrarProduto();
             frm.Show();
         }
+
+        private void menuCadastrarSolicitacao_Click(object sender, RoutedEventArgs e)
+        {
+            frmCadastrarSolicitacao frm = new frmCadastrarSolicitacao();
+            frm.ShowDialog();
+        }
     }
 }

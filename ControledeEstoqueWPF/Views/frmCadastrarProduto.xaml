@@ -5,12 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControledeEstoqueWPF.Views"
         mc:Ignorable="d"
-        Title="frmCadastrarProduto" Height="450" Width="800">
+        Title="Manter Produto" Height="328" Width="394" WindowStartupLocation="CenterScreen" FontSize="17">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="325,151,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="385,286,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="157"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="585,191,0,0" VerticalAlignment="Top"/>
-
+        <TextBox x:Name="txtId" HorizontalAlignment="Left" Margin="117,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
+        <Button x:Name="btnCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="267,208,0,0" VerticalAlignment="Top" Height="25" FontSize="16" FontWeight="Medium" TabIndex="2" Click="btnCadastrar_Click" Width="75"/>
+        <Label Content="Manter Produto" FontSize="18" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Medium" FontStretch="Medium"/>
+        <Label Content="Id:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Medium"/>
+        <Label Content="Nome:" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Medium"/>
+        <Label Content="Quantidade:" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Medium"/>
+        <Label Content="Criado em:" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Medium"/>
+        <TextBox x:Name="txtNome" HorizontalAlignment="Left" Margin="117,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" TabIndex="0"/>
+        <TextBox x:Name="txtQuantidade" HorizontalAlignment="Left" Margin="117,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" TabIndex="1"/>
+        <TextBox x:Name="txtCriadoEm" HorizontalAlignment="Left" Margin="117,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" IsEnabled="False"/>
+        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="187,208,0,0" VerticalAlignment="Top" Height="25" FontSize="16" FontWeight="Medium" TabIndex="2" Width="75" Click="btnBuscar_Click"/>
+        <Button x:Name="btnLimpar" Content="Limpar" HorizontalAlignment="Left" Margin="267,238,0,0" VerticalAlignment="Top" Height="25" FontSize="16" FontWeight="Medium" TabIndex="2" Width="75" Click="btnLimpar_Click"/>
+        <Button x:Name="btnRemover" Content="Remover" HorizontalAlignment="Left" Margin="107,208,0,0" VerticalAlignment="Top" Height="25" FontSize="16" FontWeight="Medium" TabIndex="2" Width="75" Click="btnRemover_Click" IsEnabled="False"/>
+        <Button x:Name="btnAlterar" Content="Alterar" HorizontalAlignment="Left" Margin="27,208,0,0" VerticalAlignment="Top" Height="25" FontSize="16" FontWeight="Medium" TabIndex="2" Width="75" Click="btnAlterar_Click" IsEnabled="False"/>
 
     </Grid>
 </Window>
