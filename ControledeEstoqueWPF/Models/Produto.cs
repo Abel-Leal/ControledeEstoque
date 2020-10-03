@@ -10,6 +10,7 @@ namespace ControledeEstoqueWPF.Models
     {
         public string Nome { get; set; }
         public int Quantidade { get; set; }
+        public string Tipo { get; set; }
 
     }
 }

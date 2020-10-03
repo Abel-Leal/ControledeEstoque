@@ -13,7 +13,6 @@ namespace ControledeEstoqueWPF.Models
             Cliente = new Cliente();
             Fornecedor = new Fornecedor();
             Itens = new List<ItemSolicitacao>();
-            EntradaProdutoEstoque = new EntradaProdutoEstoque();
         }
         public Cliente Cliente { get; set; }
 
@@ -21,6 +20,7 @@ namespace ControledeEstoqueWPF.Models
 
         public List<ItemSolicitacao> Itens { get; set; }
 
-        public EntradaProdutoEstoque EntradaProdutoEstoque { get; set; }
+        public  bool TipoSolicitacao { get; set; }
+
     }
 }

@@ -8,8 +8,12 @@ namespace ControledeEstoqueWPF.Models
     [Table("SaidaProdutosEstoque")]
     class Saida : BaseModel
     {
-        public Saida() => Produto = new Produto();
-        public Produto Produto { get; set; }
+        public Saida()
+        {
+            Solicitacao = new Solicitacao();
+        }
+        public Solicitacao Solicitacao { get; set; }
+        public string MotivoSaida { get; set; }
         public int QtdeSaidaProduto { get; set; }
 
     }

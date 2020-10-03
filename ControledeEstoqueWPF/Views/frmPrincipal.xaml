@@ -10,6 +10,7 @@
         <Menu VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Width="800">
             <MenuItem Header="_Arquivo">
                 <MenuItem x:Name="menuSair" Header="_Sair" Click="menuSair_Click"/>
+                <MenuItem x:Name="menuVerificarStatusEstoque" Header="_ConsultaEstoque" Click="menuVerificarStatusEstoque_Click"/>
             </MenuItem>
             <MenuItem Header="_Cadastrar">
                 <MenuItem x:Name="menuCadastrarProduto" Header="_Produto" Click="menuCadastrarProduto_Click"/>

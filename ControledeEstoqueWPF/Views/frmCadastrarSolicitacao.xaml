@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControledeEstoqueWPF.Views"
         mc:Ignorable="d"
-        Title="frmCadastrarSolicitacao" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="frmCadastrarSolicitacao" Height="490" Width="424" Loaded="Window_Loaded">
     <Grid>
         <ComboBox x:Name="cboClientes" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnAdicionar" Content="Adicionar" HorizontalAlignment="Left" Margin="269,153,0,0" VerticalAlignment="Top" Height="22" Width="70" FontWeight="Medium" FontSize="14" Click="btnAdicionar_Click"/>
@@ -17,13 +17,19 @@
         <Label Content="Fornecedores" HorizontalAlignment="Left" Margin="144,54,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
         <Label Content="Produtos" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
         <Label Content="Quantidade" HorizontalAlignment="Left" Margin="144,125,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
+        <Label Content="TipoSolicitacao" HorizontalAlignment="Left" Margin="20,390,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
         <DataGrid x:Name="dtaProdutos" AutoGenerateColumns="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="329" Height="200" Margin="10,181,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nome" Width="1*" Binding="{Binding Nome}"/>
                 <DataGridTextColumn Header="Quantidade" Width="1*" Binding="{Binding Quantidade}"/>
-                <DataGridTextColumn Header="SubtotalQtdeProduto" Width="2*" Binding="{Binding SubtotalQtdeProduto}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <StackPanel HorizontalAlignment="Left" Margin="20" Height="30" VerticalAlignment="Bottom">
+            <CheckBox x:Name="checkEntradaProduto" HorizontalAlignment="Stretch" Content="Entrada Produto" Checked="checkEntradaProduto_Checked"/>
+            <CheckBox x:Name="checkSaidaProduto" HorizontalAlignment="Stretch" Content="Saida Produto" Checked="checkSaidaProduto_Checked"/>
+        </StackPanel>
+
 
     </Grid>
+
 </Window>

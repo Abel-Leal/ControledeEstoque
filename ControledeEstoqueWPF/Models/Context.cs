@@ -14,6 +14,7 @@ namespace ControledeEstoqueWPF.Models
         public DbSet<ItemSolicitacao> ItensSolicitacao { get; set; }
         public DbSet<EntradaProdutoEstoque> EntradaProdutoEstoque { get; set; }
         public DbSet<Saida> SaidaProdutos { get; set; }
+        public DbSet<StatusEstoque> ConsultasStatusEstoques { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=ControledeEstoqueWPF;Trusted_Connection=true");

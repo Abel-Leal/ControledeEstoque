@@ -11,11 +11,10 @@ namespace ControledeEstoqueWPF.Models
         public EntradaProdutoEstoque()
         {
             Solicitacao = new Solicitacao();
-            Produtos = new List<Produto>();
         }
         public Solicitacao Solicitacao { get; set; }
-        public List<Produto> Produtos { get; set; }
         public int QtdeProdutoEntrada { get; set; }
+        public bool EspaçoDisponívelEstoque { get; set; }
 
     }
 }

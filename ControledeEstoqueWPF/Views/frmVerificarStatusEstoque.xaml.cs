@@ -21,5 +21,10 @@ namespace ControledeEstoqueWPF.Views
         {
             InitializeComponent();
         }
+
+        private void btnConsultarEntradaEstoque_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

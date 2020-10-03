@@ -57,7 +57,7 @@ namespace ControledeEstoqueWPF.Views
             itens.Add(new
             {
                 Nome = produto.Nome,
-                Quantidade = Convert.ToInt32(txtQuantidade.Text),
+                Quantidade = Convert.ToInt32(txtQuantidade.Text)
             });
 
         }
@@ -68,8 +68,18 @@ namespace ControledeEstoqueWPF.Views
             {
                 Produto = produto,
                 Quantidade = Convert.ToInt32(txtQuantidade.Text),
-            
+
             });
+        }
+
+        private void checkEntradaProduto_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void checkSaidaProduto_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
