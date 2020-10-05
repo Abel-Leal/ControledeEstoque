@@ -8,9 +8,9 @@ namespace ControledeEstoqueWPF.DAL
 {
     class StatusEstoqueDAO
     {
-        private static Context _context = new Context();
+        private static Context _context = SingletonContext.GetInstance();
         public static List<StatusEstoque> Listar() => _context.ConsultasStatusEstoque.ToList();
-        public static StatusEstoque BuscaPorId(int id) => _context.ConsultasStatusEstoque.Find(id);
+        public static StatusEstoque BuscaPorId(Produto produto) => _context.ConsultasStatusEstoque.Find(produto);
 
     }
 }
