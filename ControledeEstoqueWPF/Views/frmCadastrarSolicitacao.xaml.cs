@@ -21,6 +21,7 @@ namespace ControledeEstoqueWPF.Views
     {
         private Solicitacao solicitacao = new Solicitacao();
         private List<dynamic> itens = new List<dynamic>();
+        private int totalItens = 0;
         public frmCadastrarSolicitacao()
         {
             InitializeComponent();
@@ -50,6 +51,8 @@ namespace ControledeEstoqueWPF.Views
             PopularDataGrid(produto);
             dtaProdutos.ItemsSource = itens;
             dtaProdutos.Items.Refresh();
+            totalItens += Convert.ToInt32(txtQuantidadeProduto.Text);
+            lblTotalItens.Content = $"Total de Itens: {totalItens}";
         }
 
         private void PopularDataGrid(Produto produto)
@@ -57,7 +60,8 @@ namespace ControledeEstoqueWPF.Views
             itens.Add(new
             {
                 Nome = produto.Nome,
-                Quantidade = Convert.ToInt32(txtQuantidade.Text)
+                Tipo = produto.Tipo,
+                Quantidade = Convert.ToInt32(txtQuantidadeProduto.Text)
             });
 
         }
@@ -67,19 +71,19 @@ namespace ControledeEstoqueWPF.Views
             solicitacao.Itens.Add(new ItemSolicitacao
             {
                 Produto = produto,
-                Quantidade = Convert.ToInt32(txtQuantidade.Text),
+                Quantidade = Convert.ToInt32(txtQuantidadeProduto.Text)
 
             });
         }
 
-        private void checkEntradaProduto_Checked(object sender, RoutedEventArgs e)
+        private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void checkSaidaProduto_Checked(object sender, RoutedEventArgs e)
-        {
-
+            int idCliente = (int)cboClientes.SelectedValue;
+            int idFornecedor = (int)cboFornecedores.SelectedValue;
+            solicitacao.Cliente = ClienteDAO.BuscaPorId(idCliente);
+            solicitacao.Fornecedor = FornecedorDAO.BuscaPorId(idFornecedor);
+            SolicitacaoDAO.Cadastrar(solicitacao);
+            MessageBox.Show("Solicitacao efetivada!", "Controle de Estoque", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

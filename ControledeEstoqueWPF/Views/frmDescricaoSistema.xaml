@@ -1,0 +1,15 @@
+﻿<Window x:Class="ControledeEstoqueWPF.Views.frmDescricaoSistema"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ControledeEstoqueWPF.Views"
+        mc:Ignorable="d"
+        Title="frmDescricaoSistema" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="39,86,0,0" Text="Este sistema foi desenvolvido para fins acadêmicos e tem por finalidade apresentar uma aplicação que gerencia o funcionamento de um estoque.
+                   Desenvolvedor: Abel Leal" TextWrapping="Wrap" VerticalAlignment="Top" Height="69" Width="412" Foreground="#FFFFE800" Background="Black"/>
+        <Label Content="Sistema de Controle de Estoque" HorizontalAlignment="Left" Margin="39,25,0,0" VerticalAlignment="Top" FontSize="18"/>
+
+    </Grid>
+</Window>

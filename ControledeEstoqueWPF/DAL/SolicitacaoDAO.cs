@@ -1,15 +1,17 @@
 ﻿using ControledeEstoqueWPF.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace ControledeEstoqueWPF.DAL
 {
-    class FornecedorDAO
+    class SolicitacaoDAO
     {
         private static Context _context = SingletonContext.GetInstance();
-        public static List<Fornecedor> Listar() => _context.Fornecedores.ToList();
-        public static Fornecedor BuscaPorId(int id) => _context.Fornecedores.Find(id);
+        public static void Cadastrar(Solicitacao solicitacao)
+        {
+            _context.Solicitacoes.Add(solicitacao);
+            _context.SaveChanges();
+        }
     }
 }

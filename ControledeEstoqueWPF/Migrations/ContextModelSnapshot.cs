@@ -38,6 +38,9 @@ namespace ControledeEstoqueWPF.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Setor")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Clientes");
@@ -53,8 +56,8 @@ namespace ControledeEstoqueWPF.Migrations
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("QtdeDisponivel")
-                        .HasColumnType("int");
+                    b.Property<bool>("EspaçoDisponívelEstoque")
+                        .HasColumnType("bit");
 
                     b.Property<int>("QtdeProdutoEntrada")
                         .HasColumnType("int");
@@ -62,9 +65,14 @@ namespace ControledeEstoqueWPF.Migrations
                     b.Property<int?>("SolicitacaoId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("StatusEstoqueId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("SolicitacaoId");
+
+                    b.HasIndex("StatusEstoqueId");
 
                     b.ToTable("EntradaProdutosEstoque");
                 });
@@ -134,24 +142,16 @@ namespace ControledeEstoqueWPF.Migrations
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("EntradaProdutoEstoqueId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EstoqueMax")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EstoqueMin")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<string>("Tipo")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("EntradaProdutoEstoqueId");
+                    b.HasKey("Id");
 
                     b.ToTable("Produtos");
                 });
@@ -166,10 +166,23 @@ namespace ControledeEstoqueWPF.Migrations
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("MotivoSaida")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("QtdeSaidaProduto")
                         .HasColumnType("int");
 
+                    b.Property<int?>("SolicitacaoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("StatusEstoqueId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("SolicitacaoId");
+
+                    b.HasIndex("StatusEstoqueId");
 
                     b.ToTable("SaidaProdutosEstoque");
                 });
@@ -190,6 +203,9 @@ namespace ControledeEstoqueWPF.Migrations
                     b.Property<int?>("FornecedorId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("TipoSolicitacao")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ClienteId");
@@ -199,11 +215,35 @@ namespace ControledeEstoqueWPF.Migrations
                     b.ToTable("Solicitacoes");
                 });
 
+            modelBuilder.Entity("ControledeEstoqueWPF.Models.StatusEstoque", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CriadoEm")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ProdutoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.ToTable("ConsultasStatusEstoque");
+                });
+
             modelBuilder.Entity("ControledeEstoqueWPF.Models.EntradaProdutoEstoque", b =>
                 {
                     b.HasOne("ControledeEstoqueWPF.Models.Solicitacao", "Solicitacao")
                         .WithMany()
                         .HasForeignKey("SolicitacaoId");
+
+                    b.HasOne("ControledeEstoqueWPF.Models.StatusEstoque", null)
+                        .WithMany("EntradaProdutosEstoque")
+                        .HasForeignKey("StatusEstoqueId");
                 });
 
             modelBuilder.Entity("ControledeEstoqueWPF.Models.ItemSolicitacao", b =>
@@ -217,11 +257,15 @@ namespace ControledeEstoqueWPF.Migrations
                         .HasForeignKey("SolicitacaoId");
                 });
 
-            modelBuilder.Entity("ControledeEstoqueWPF.Models.Produto", b =>
+            modelBuilder.Entity("ControledeEstoqueWPF.Models.Saida", b =>
                 {
-                    b.HasOne("ControledeEstoqueWPF.Models.EntradaProdutoEstoque", null)
-                        .WithMany("Produtos")
-                        .HasForeignKey("EntradaProdutoEstoqueId");
+                    b.HasOne("ControledeEstoqueWPF.Models.Solicitacao", "Solicitacao")
+                        .WithMany()
+                        .HasForeignKey("SolicitacaoId");
+
+                    b.HasOne("ControledeEstoqueWPF.Models.StatusEstoque", null)
+                        .WithMany("Saidas")
+                        .HasForeignKey("StatusEstoqueId");
                 });
 
             modelBuilder.Entity("ControledeEstoqueWPF.Models.Solicitacao", b =>
@@ -233,6 +277,13 @@ namespace ControledeEstoqueWPF.Migrations
                     b.HasOne("ControledeEstoqueWPF.Models.Fornecedor", "Fornecedor")
                         .WithMany()
                         .HasForeignKey("FornecedorId");
+                });
+
+            modelBuilder.Entity("ControledeEstoqueWPF.Models.StatusEstoque", b =>
+                {
+                    b.HasOne("ControledeEstoqueWPF.Models.Produto", "Produto")
+                        .WithMany()
+                        .HasForeignKey("ProdutoId");
                 });
 #pragma warning restore 612, 618
         }

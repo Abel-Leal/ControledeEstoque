@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControledeEstoqueWPF.Views"
         mc:Ignorable="d"
-        Title="frmVerificarStatusEstoque" Height="421" Width="728">
+        Title="frmVerificarStatusEstoque" Height="421" Width="728" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,-11,0">
         <DataGrid HorizontalAlignment="Left" Height="200" Margin="10,126,0,0" VerticalAlignment="Top" Width="300">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="CódigoEntrada" Width="1*" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Quantidade" Width="1*" Binding="{Binding QtdeProdutoEntrada}"/>
-                <DataGridTextColumn Header="Espaço Disponível" Width="1.2*" Binding="{Binding EspaçoDisponívelEstoque}"/>
+                <DataGridTextColumn Header="Espaço Disponível ?" Width="1.3*" Binding="{Binding EspaçoDisponívelEstoque}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid HorizontalAlignment="Right" Height="200" Margin="0,126,88,0" VerticalAlignment="Top" Width="300">
+        <DataGrid HorizontalAlignment="Right" Height="200" Margin="0,126,88,0" VerticalAlignment="Top" Width="300" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="CódigoSaída" Width="1*" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Quantidade" Width="1*" Binding="{Binding QtdeSaidaProduto}"/>
-                <DataGridTextColumn Header="Motivo da Saída" Width="1.2*" Binding="{Binding MotivoSaida}"/>
+                <DataGridTextColumn Header="Motivo da Saída" Width="1.3*" Binding="{Binding MotivoSaida}"/>
             </DataGrid.Columns>
         </DataGrid>
         <ComboBox x:Name="cboEntradadeProdutos" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Width="120"/>
@@ -27,5 +27,7 @@
         <Label Content="Consultar Saídas do Estoque" HorizontalAlignment="Left" Margin="340,52,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Medium"/>
         <Button x:Name="btnConsultarEntradaEstoque" Content="Consultar" HorizontalAlignment="Left" Margin="140,79,0,0" VerticalAlignment="Top" FontWeight="Medium" Click="btnConsultarEntradaEstoque_Click"/>
         <Button x:Name="btnVerificarSaidaEstoque" Content="Verificar" HorizontalAlignment="Left" Margin="481,83,0,0" VerticalAlignment="Top" FontWeight="Medium" Click="btnVerificarSaidaEstoque_Click"/>
+        <Button x:Name="btnLimparListagem" Content="LimparListagem" HorizontalAlignment="Left" Margin="275,343,0,0" VerticalAlignment="Top" FontWeight="Medium" Height="38" Width="102" Click="btnLimparListagem_Click"/>
+        <Label Content="Situacao do Estoque" HorizontalAlignment="Left" Height="36" Margin="234,5,0,0" VerticalAlignment="Top" Width="214" FontSize="20" FontWeight="Medium"/>
     </Grid>
 </Window>

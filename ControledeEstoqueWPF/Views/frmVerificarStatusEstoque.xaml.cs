@@ -26,5 +26,20 @@ namespace ControledeEstoqueWPF.Views
         {
 
         }
+
+        private void btnVerificarSaidaEstoque_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btnLimparListagem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

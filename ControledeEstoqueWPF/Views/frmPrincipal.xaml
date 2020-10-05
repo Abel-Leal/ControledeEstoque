@@ -5,18 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControledeEstoqueWPF.Views"
         mc:Ignorable="d"
-        Title="Controle de Estoque WPF" Height="621" Width="947" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+        Title="Controle de Estoque WPF" Height="550" Width="1003" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid>
-        <Menu VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Width="800">
+        <Menu VerticalAlignment="Top" HorizontalAlignment="Center" Height="20" Width="947">
             <MenuItem Header="_Arquivo">
-                <MenuItem x:Name="menuSair" Header="_Sair" Click="menuSair_Click"/>
                 <MenuItem x:Name="menuVerificarStatusEstoque" Header="_ConsultaEstoque" Click="menuVerificarStatusEstoque_Click"/>
+                <MenuItem x:Name="menuSair" Header="_Sair" Click="menuSair_Click"/>
             </MenuItem>
             <MenuItem Header="_Cadastrar">
                 <MenuItem x:Name="menuCadastrarProduto" Header="_Produto" Click="menuCadastrarProduto_Click"/>
                 <MenuItem x:Name="menuCadastrarSolicitacao" Header="_Solicitacao" Click="menuCadastrarSolicitacao_Click"/>
             </MenuItem>
-            <MenuItem Header="_Sobre"/>
+            <MenuItem x:Name="menuSobre" Header="_Sobre" Click="menuSobre_Click">
+            </MenuItem>
         </Menu>
+        <Label Content="CONTROLE DE ESTOQUE" Margin="5,198,5,204" FontSize="70" FontStyle="Normal" FontWeight="Medium" FontStretch="Medium" FontFamily="Bodoni MT Black">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="#FFF1F11D" Offset="0.209"/>
+                    <GradientStop Color="#FF68680C" Offset="0.72"/>
+                    <GradientStop Color="#FFB8B815" Offset="0.586"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
     </Grid>
 </Window>

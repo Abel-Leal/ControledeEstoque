@@ -52,5 +52,11 @@ namespace ControledeEstoqueWPF.Views
             frmVerificarStatusEstoque frm = new frmVerificarStatusEstoque();
             frm.ShowDialog();
         }
+
+        private void menuSobre_Click(object sender, RoutedEventArgs e)
+        {
+            frmDescricaoSistema frm = new frmDescricaoSistema();
+            frm.ShowDialog();
+        }
     }
 }

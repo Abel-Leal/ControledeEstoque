@@ -9,5 +9,7 @@ namespace ControledeEstoqueWPF.Models
     class Cliente : Usuario
     {
         public string Email { get; set; }
+        public string Setor { get; set; }
+
     }
 }

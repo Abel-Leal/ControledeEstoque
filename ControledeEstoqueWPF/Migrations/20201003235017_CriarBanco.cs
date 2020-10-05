@@ -16,7 +16,8 @@ namespace ControledeEstoqueWPF.Migrations
                     CriadoEm = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(nullable: true),
                     Cpf = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true)
+                    Email = table.Column<string>(nullable: true),
+                    Setor = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,17 +42,19 @@ namespace ControledeEstoqueWPF.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SaidaProdutosEstoque",
+                name: "Produtos",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CriadoEm = table.Column<DateTime>(nullable: false),
-                    QtdeSaidaProduto = table.Column<int>(nullable: false)
+                    Nome = table.Column<string>(nullable: true),
+                    Quantidade = table.Column<int>(nullable: false),
+                    Tipo = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SaidaProdutosEstoque", x => x.Id);
+                    table.PrimaryKey("PK_Produtos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -62,7 +65,8 @@ namespace ControledeEstoqueWPF.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CriadoEm = table.Column<DateTime>(nullable: false),
                     ClienteId = table.Column<int>(nullable: true),
-                    FornecedorId = table.Column<int>(nullable: true)
+                    FornecedorId = table.Column<int>(nullable: true),
+                    TipoSolicitacao = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -82,47 +86,21 @@ namespace ControledeEstoqueWPF.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EntradaProdutosEstoque",
+                name: "ConsultasStatusEstoque",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CriadoEm = table.Column<DateTime>(nullable: false),
-                    SolicitacaoId = table.Column<int>(nullable: true),
-                    QtdeProdutoEntrada = table.Column<int>(nullable: false),
-                    QtdeDisponivel = table.Column<int>(nullable: false)
+                    ProdutoId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EntradaProdutosEstoque", x => x.Id);
+                    table.PrimaryKey("PK_ConsultasStatusEstoque", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EntradaProdutosEstoque_Solicitacoes_SolicitacaoId",
-                        column: x => x.SolicitacaoId,
-                        principalTable: "Solicitacoes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Produtos",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CriadoEm = table.Column<DateTime>(nullable: false),
-                    Nome = table.Column<string>(nullable: true),
-                    Quantidade = table.Column<int>(nullable: false),
-                    EstoqueMax = table.Column<int>(nullable: false),
-                    EstoqueMin = table.Column<int>(nullable: false),
-                    EntradaProdutoEstoqueId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Produtos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Produtos_EntradaProdutosEstoque_EntradaProdutoEstoqueId",
-                        column: x => x.EntradaProdutoEstoqueId,
-                        principalTable: "EntradaProdutosEstoque",
+                        name: "FK_ConsultasStatusEstoque_Produtos_ProdutoId",
+                        column: x => x.ProdutoId,
+                        principalTable: "Produtos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -155,10 +133,78 @@ namespace ControledeEstoqueWPF.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "EntradaProdutosEstoque",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CriadoEm = table.Column<DateTime>(nullable: false),
+                    SolicitacaoId = table.Column<int>(nullable: true),
+                    QtdeProdutoEntrada = table.Column<int>(nullable: false),
+                    EspaçoDisponívelEstoque = table.Column<bool>(nullable: false),
+                    StatusEstoqueId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EntradaProdutosEstoque", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EntradaProdutosEstoque_Solicitacoes_SolicitacaoId",
+                        column: x => x.SolicitacaoId,
+                        principalTable: "Solicitacoes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EntradaProdutosEstoque_ConsultasStatusEstoque_StatusEstoqueId",
+                        column: x => x.StatusEstoqueId,
+                        principalTable: "ConsultasStatusEstoque",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SaidaProdutosEstoque",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CriadoEm = table.Column<DateTime>(nullable: false),
+                    SolicitacaoId = table.Column<int>(nullable: true),
+                    MotivoSaida = table.Column<string>(nullable: true),
+                    QtdeSaidaProduto = table.Column<int>(nullable: false),
+                    StatusEstoqueId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SaidaProdutosEstoque", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SaidaProdutosEstoque_Solicitacoes_SolicitacaoId",
+                        column: x => x.SolicitacaoId,
+                        principalTable: "Solicitacoes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_SaidaProdutosEstoque_ConsultasStatusEstoque_StatusEstoqueId",
+                        column: x => x.StatusEstoqueId,
+                        principalTable: "ConsultasStatusEstoque",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ConsultasStatusEstoque_ProdutoId",
+                table: "ConsultasStatusEstoque",
+                column: "ProdutoId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_EntradaProdutosEstoque_SolicitacaoId",
                 table: "EntradaProdutosEstoque",
                 column: "SolicitacaoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EntradaProdutosEstoque_StatusEstoqueId",
+                table: "EntradaProdutosEstoque",
+                column: "StatusEstoqueId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ItensSolicitacao_ProdutoId",
@@ -171,9 +217,14 @@ namespace ControledeEstoqueWPF.Migrations
                 column: "SolicitacaoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Produtos_EntradaProdutoEstoqueId",
-                table: "Produtos",
-                column: "EntradaProdutoEstoqueId");
+                name: "IX_SaidaProdutosEstoque_SolicitacaoId",
+                table: "SaidaProdutosEstoque",
+                column: "SolicitacaoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SaidaProdutosEstoque_StatusEstoqueId",
+                table: "SaidaProdutosEstoque",
+                column: "StatusEstoqueId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Solicitacoes_ClienteId",
@@ -189,25 +240,28 @@ namespace ControledeEstoqueWPF.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "EntradaProdutosEstoque");
+
+            migrationBuilder.DropTable(
                 name: "ItensSolicitacao");
 
             migrationBuilder.DropTable(
                 name: "SaidaProdutosEstoque");
 
             migrationBuilder.DropTable(
-                name: "Produtos");
-
-            migrationBuilder.DropTable(
-                name: "EntradaProdutosEstoque");
-
-            migrationBuilder.DropTable(
                 name: "Solicitacoes");
+
+            migrationBuilder.DropTable(
+                name: "ConsultasStatusEstoque");
 
             migrationBuilder.DropTable(
                 name: "Clientes");
 
             migrationBuilder.DropTable(
                 name: "Fornecedores");
+
+            migrationBuilder.DropTable(
+                name: "Produtos");
         }
     }
 }
