@@ -20,8 +20,12 @@ namespace ControledeEstoqueWPF.Views
     public partial class frmCadastrarSolicitacao : Window
     {
         private Solicitacao solicitacao = new Solicitacao();
-        private List<dynamic> itens = new List<dynamic>();
-        private int totalItens = 0;
+        private List<dynamic> entradas = new List<dynamic>();
+        private List<dynamic> saidas = new List<dynamic>();
+        private int totalEntradas = 0;
+        private int totalSaidas = 0;
+
+
         public frmCadastrarSolicitacao()
         {
             InitializeComponent();
@@ -40,24 +44,49 @@ namespace ControledeEstoqueWPF.Views
             cboProdutos.ItemsSource = ProdutoDAO.Listar();
             cboProdutos.DisplayMemberPath = "Nome";
             cboProdutos.SelectedValuePath = "Id";
-        
+
         }
 
-        private void btnAdicionar_Click(object sender, RoutedEventArgs e)
+        private void btnAdicionarEntrada_Click(object sender, RoutedEventArgs e)
         {
             int id = (int)cboProdutos.SelectedValue;
             Produto produto = ProdutoDAO.BuscaPorId(id);
-            PopularItensSolicitacao(produto);
-            PopularDataGrid(produto);
-            dtaProdutos.ItemsSource = itens;
-            dtaProdutos.Items.Refresh();
-            totalItens += Convert.ToInt32(txtQuantidadeProduto.Text);
-            lblTotalItens.Content = $"Total de Itens: {totalItens}";
+            PopularEntradasSolicitacao(produto);
+            PopularDataGridEntrada(produto);
+            dtaEntradaProdutos.ItemsSource = entradas;
+            dtaEntradaProdutos.Items.Refresh();
+            totalEntradas += Convert.ToInt32(txtQuantidadeProduto.Text);
+            lblTotalEntradas.Content = $"Total de Entradas: {totalEntradas}";
         }
 
-        private void PopularDataGrid(Produto produto)
+        private void btnRegistrarSaida_Click(object sender, RoutedEventArgs e)
         {
-            itens.Add(new
+            int id = (int)cboProdutos.SelectedValue;
+            Produto produto = ProdutoDAO.BuscaPorId(id);
+            PopularSaidasSolicitacao(produto);
+            PopularDataGridSaida(produto);
+            dtaSaidaProdutos.ItemsSource = saidas;
+            dtaSaidaProdutos.Items.Refresh();
+            totalSaidas += Convert.ToInt32(txtQuantidadeProduto.Text);
+            lblTotalSaidas.Content = $"Total de Saidas: {totalSaidas}";
+        }
+
+
+        private void PopularDataGridEntrada(Produto produto)
+        {
+            entradas.Add(new
+            {
+                Nome = produto.Nome,
+                Tipo = produto.Tipo,
+                Categoria = produto.Categoria,
+                Quantidade = Convert.ToInt32(txtQuantidadeProduto.Text)
+            });
+
+        }
+
+        private void PopularDataGridSaida(Produto produto)
+        {
+            saidas.Add(new
             {
                 Nome = produto.Nome,
                 Tipo = produto.Tipo,
@@ -66,24 +95,33 @@ namespace ControledeEstoqueWPF.Views
 
         }
 
-        private void PopularItensSolicitacao(Produto produto)
+        private void PopularEntradasSolicitacao(Produto produto)
         {
-            solicitacao.Itens.Add(new ItemSolicitacao
+            solicitacao.Entradas.Add(new Entrada
             {
                 Produto = produto,
-                Quantidade = Convert.ToInt32(txtQuantidadeProduto.Text)
+                QtdeEntrada = Convert.ToInt32(txtQuantidadeProduto.Text)
+
+            });
+        }
+        private void PopularSaidasSolicitacao(Produto produto)
+        {
+            solicitacao.Saidas.Add(new Saida
+            {
+                Produto = produto,
+                QtdeSaida = Convert.ToInt32(txtQuantidadeProduto.Text)
 
             });
         }
 
-        private void btnCadastrar_Click(object sender, RoutedEventArgs e)
+        private void btnCadastrarSolicitacao_Click(object sender, RoutedEventArgs e)
         {
             int idCliente = (int)cboClientes.SelectedValue;
             int idFornecedor = (int)cboFornecedores.SelectedValue;
             solicitacao.Cliente = ClienteDAO.BuscaPorId(idCliente);
             solicitacao.Fornecedor = FornecedorDAO.BuscaPorId(idFornecedor);
             SolicitacaoDAO.Cadastrar(solicitacao);
-            MessageBox.Show("Solicitacao efetivada!", "Controle de Estoque", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Solicitação efetivada!", "Controle de Estoque", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

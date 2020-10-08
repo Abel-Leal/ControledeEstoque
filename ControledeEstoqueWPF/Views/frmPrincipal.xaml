@@ -9,12 +9,13 @@
     <Grid>
         <Menu VerticalAlignment="Top" HorizontalAlignment="Center" Height="20" Width="947">
             <MenuItem Header="_Arquivo">
-                <MenuItem x:Name="menuVerificarStatusEstoque" Header="_ConsultaEstoque" Click="menuVerificarStatusEstoque_Click"/>
                 <MenuItem x:Name="menuSair" Header="_Sair" Click="menuSair_Click"/>
             </MenuItem>
             <MenuItem Header="_Cadastrar">
                 <MenuItem x:Name="menuCadastrarProduto" Header="_Produto" Click="menuCadastrarProduto_Click"/>
                 <MenuItem x:Name="menuCadastrarSolicitacao" Header="_Solicitacao" Click="menuCadastrarSolicitacao_Click"/>
+                <MenuItem x:Name="menuCadastrarEntradaProduto" Header="_EntradaProduto" Click="menuCadastrarEntradaProduto_Click"/>
+                <MenuItem x:Name="menuCadastrarSaidaProduto" Header="_SaidaProduto" Click="menuCadastrarSaidaProduto_Click"/>
             </MenuItem>
             <MenuItem x:Name="menuSobre" Header="_Sobre" Click="menuSobre_Click">
             </MenuItem>

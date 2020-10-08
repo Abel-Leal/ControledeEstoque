@@ -5,24 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControledeEstoqueWPF.Views"
         mc:Ignorable="d"
-        Title="Manter Produto" Height="328" Width="394" WindowStartupLocation="CenterScreen" FontSize="17">
+        Title="Manter Produto" Height="373" Width="432" WindowStartupLocation="CenterScreen" FontSize="17">
     <Grid>
-        <TextBox x:Name="txtId" HorizontalAlignment="Left" Margin="117,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
-        <Button x:Name="btnCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="267,240,0,0" VerticalAlignment="Top" Height="26" FontSize="16" FontWeight="Medium" TabIndex="3" Click="btnCadastrar_Click" Width="75"/>
+        <TextBox x:Name="txtId" Margin="114,65,118,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsEnabled="False" HorizontalContentAlignment="Stretch" IsManipulationEnabled="True"/>
+        <Button x:Name="btnCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="264,275,0,0" VerticalAlignment="Top" Height="26" FontSize="16" FontWeight="Medium" TabIndex="3" Click="btnCadastrar_Click" Width="75"/>
         <Label Content="Manter Produto" FontSize="18" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Medium" FontStretch="Medium"/>
-        <Label Content="Id:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Medium"/>
-        <Label Content="Nome:" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Medium"/>
-        <Label Content="Quantidade:" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Medium"/>
-        <Label Content="Criado em:" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Medium"/>
-        <TextBox x:Name="txtNome" HorizontalAlignment="Left" Margin="117,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" TabIndex="0"/>
-        <TextBox x:Name="txtQuantidade" HorizontalAlignment="Left" Margin="117,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" TabIndex="1"/>
-        <TextBox x:Name="txtCriadoEm" HorizontalAlignment="Left" Margin="117,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" IsEnabled="False"/>
-        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="187,240,0,0" VerticalAlignment="Top" Height="26" FontSize="16" FontWeight="Medium" TabIndex="3" Width="75" Click="btnBuscar_Click"/>
-        <Button x:Name="btnLimpar" Content="Limpar" HorizontalAlignment="Left" Margin="230,271,0,0" VerticalAlignment="Top" Height="25" FontSize="16" FontWeight="Medium" TabIndex="3" Width="74" Click="btnLimpar_Click"/>
-        <Button x:Name="btnRemover" Content="Remover" HorizontalAlignment="Left" Margin="107,241,0,0" VerticalAlignment="Top" Height="25" FontSize="16" FontWeight="Medium" TabIndex="3" Width="75" Click="btnRemover_Click" IsEnabled="False"/>
-        <Button x:Name="btnAlterar" Content="Alterar" HorizontalAlignment="Left" Margin="27,241,0,0" VerticalAlignment="Top" Height="25" FontSize="16" FontWeight="Medium" TabIndex="3" Width="75" Click="btnAlterar_Click" IsEnabled="False"/>
-        <TextBox x:Name="txtTipo" HorizontalAlignment="Left" Margin="117,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" TabIndex="2"/>
-        <Label Content="Tipo:" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top" FontWeight="Medium"/>
+        <Label Content="Id:" HorizontalAlignment="Left" Margin="15,55,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Medium"/>
+        <Label Content="Nome:" HorizontalAlignment="Left" Margin="8,85,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Medium"/>
+        <Label Content="Quantidade:" HorizontalAlignment="Left" Margin="5,121,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Medium"/>
+        <Label Content="Criado em:" HorizontalAlignment="Left" Margin="5,227,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Medium"/>
+        <TextBox x:Name="txtNome" Margin="114,95,93,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" TabIndex="0" HorizontalContentAlignment="Stretch" IsManipulationEnabled="True"/>
+        <TextBox x:Name="txtQuantidade" Margin="114,129,93,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" TabIndex="1" HorizontalContentAlignment="Stretch" IsManipulationEnabled="True"/>
+        <TextBox x:Name="txtCriadoEm" Margin="114,234,93,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" IsEnabled="False" HorizontalContentAlignment="Stretch" IsManipulationEnabled="True"/>
+        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="182,276,0,0" VerticalAlignment="Top" Height="26" FontSize="16" FontWeight="Medium" TabIndex="3" Width="75" Click="btnBuscar_Click"/>
+        <Button x:Name="btnLimpar" Content="Limpar" HorizontalAlignment="Left" Margin="226,307,0,0" VerticalAlignment="Top" Height="25" FontSize="16" FontWeight="Medium" TabIndex="3" Width="74" Click="btnLimpar_Click"/>
+        <Button x:Name="btnRemover" Content="Remover" HorizontalAlignment="Left" Margin="102,277,0,0" VerticalAlignment="Top" Height="25" FontSize="16" FontWeight="Medium" TabIndex="3" Width="75" Click="btnRemover_Click" IsEnabled="False"/>
+        <Button x:Name="btnAlterar" Content="Alterar" HorizontalAlignment="Left" Margin="22,278,0,0" VerticalAlignment="Top" Height="24" FontSize="16" FontWeight="Medium" TabIndex="3" Width="75" Click="btnAlterar_Click" IsEnabled="False"/>
+        <TextBox x:Name="txtTipo" Margin="114,159,93,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" TabIndex="2" HorizontalContentAlignment="Stretch" IsManipulationEnabled="True"/>
+        <Label Content="Tipo:" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top" FontWeight="Medium"/>
+        <Label Content="Categoria:" HorizontalAlignment="Left" Height="31" Margin="8,187,0,0" VerticalAlignment="Top" Width="104" FontSize="16" FontWeight="Medium"/>
+        <TextBox x:Name="txtCategoria" Margin="114,193,93,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="3" HorizontalContentAlignment="Stretch" IsManipulationEnabled="True"/>
 
     </Grid>
 </Window>

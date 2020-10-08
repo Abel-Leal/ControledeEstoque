@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControledeEstoqueWPF.Views"
         mc:Ignorable="d"
-        Title="frmCadastrarSolicitacao" Height="607" Width="357" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <ComboBox x:Name="cboClientes" HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnAdicionar" Content="Adicionar" HorizontalAlignment="Left" Margin="240,209,0,0" VerticalAlignment="Top" Height="22" Width="95" FontWeight="Medium" FontSize="14" Click="btnAdicionar_Click"/>
-        <ComboBox x:Name="cboProdutos" HorizontalAlignment="Left" Margin="6,210,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cboFornecedores" HorizontalAlignment="Left" Margin="139,149,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtQuantidadeProduto" HorizontalAlignment="Left" Margin="139,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="22"/>
-        <Label Content="Cadastrar Solicitação" HorizontalAlignment="Left" Margin="6,10,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Medium"/>
-        <Label Content="Clientes" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
-        <Label Content="Fornecedores" HorizontalAlignment="Left" Margin="139,115,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
-        <Label Content="Produtos" HorizontalAlignment="Left" Margin="10,176,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
-        <Label Content="Quantidade" HorizontalAlignment="Left" Margin="139,175,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
-        <Label Content="TipoSolicitacao" HorizontalAlignment="Left" Margin="6,50,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
-        <DataGrid x:Name="dtaProdutos" AutoGenerateColumns="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="329" Height="227" Margin="6,237,0,0">
+        Title="frmCadastrarSolicitacao" Height="687" Width="911" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,50,0">
+        <ComboBox x:Name="cboClientes" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnAdicionarEntrada" Content="Adicionar Entrada" HorizontalAlignment="Left" Margin="8,206,0,0" VerticalAlignment="Top" Height="30" Width="130" FontWeight="Medium" FontSize="14" Click="btnAdicionarEntrada_Click" RenderTransformOrigin="1,0"/>
+        <ComboBox x:Name="cboProdutos" HorizontalAlignment="Left" Margin="151,154,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cboFornecedores" HorizontalAlignment="Left" Margin="295,154,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtQuantidadeProduto" HorizontalAlignment="Left" Margin="436,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="22"/>
+        <Label Content="Cadastrar Solicitação - Entrada - Saída" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Medium"/>
+        <Label Content="Clientes" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
+        <Label Content="Fornecedores" HorizontalAlignment="Left" Margin="295,120,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
+        <Label Content="Produtos" HorizontalAlignment="Left" Margin="151,120,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
+        <Label Content="Quantidade" HorizontalAlignment="Left" Margin="436,120,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
+        <Label Content="TipoSolicitacao:" HorizontalAlignment="Left" Margin="6,55,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
+        <DataGrid x:Name="dtaEntradaProdutos" AutoGenerateColumns="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330" Height="227" Margin="10,303,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nome" Width="1*" Binding="{Binding Nome}"/>
                 <DataGridTextColumn Header="TipoProduto" Width="1*" Binding="{Binding Tipo}"/>
@@ -26,8 +26,21 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label x:Name="lblTotalItens" Content="Total de Itens: " HorizontalAlignment="Left" Margin="10,469,0,0" VerticalAlignment="Top" FontWeight="Medium" FontSize="14"/>
-        <Button x:Name="btnCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Height="29" Margin="224,470,0,0" VerticalAlignment="Top" Width="111" FontSize="14" FontWeight="Medium" Click="btnCadastrar_Click"/>
+        <Label x:Name="lblTotalEntradas" Content="Total de Entradas: " HorizontalAlignment="Left" Margin="12,535,0,0" VerticalAlignment="Top" FontWeight="Medium" FontSize="14"/>
+        <Button x:Name="btnCadastrarSolicitacao" Content="Cadastrar Solicitacao" HorizontalAlignment="Left" Height="49" Margin="268,583,0,0" VerticalAlignment="Top" Width="174" FontSize="16" FontWeight="Medium" Click="btnCadastrarSolicitacao_Click"/>
+        <Label x:Name="lblTotalSaidas" Content="Total de Saidas: " HorizontalAlignment="Left" Margin="368,535,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
+        <DataGrid x:Name="dtaSaidaProdutos" AutoGenerateColumns="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="328" Height="227" Margin="368,303,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nome" Width="1*" Binding="{Binding Nome}"/>
+                <DataGridTextColumn Header="TipoProduto" Width="1*" Binding="{Binding Tipo}"/>
+                <DataGridTextColumn Header="Quantidade" Width="1*" Binding="{Binding Quantidade}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Entradas" HorizontalAlignment="Left" Margin="12,269,0,0" VerticalAlignment="Top" FontWeight="Medium" Width="82" FontSize="14"/>
+        <Label Content="Saidas" HorizontalAlignment="Left" Margin="370,269,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium"/>
+        <Button x:Name="btnRegistrarSaida" Content="Registrar Saida" HorizontalAlignment="Left" Margin="368,205,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Medium" Click="btnRegistrarSaida_Click" Height="30" Width="130"/>
+        <TextBox x:Name="txtTipoSolictacaoEntrada" HorizontalAlignment="Left" Margin="121,52,0,0" Text="Entrada" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtTipoSolicitacaoSaida" HorizontalAlignment="Left" Margin="121,75,0,0" Text="Saida" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
 
     </Grid>

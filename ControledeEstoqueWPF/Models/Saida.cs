@@ -5,16 +5,11 @@ using System.Text;
 
 namespace ControledeEstoqueWPF.Models
 {
-    [Table("SaidaProdutosEstoque")]
+    [Table("SaidaProdutos")]
     class Saida : BaseModel
     {
-        public Saida()
-        {
-            Solicitacao = new Solicitacao();
-        }
-        public Solicitacao Solicitacao { get; set; }
-        public string MotivoSaida { get; set; }
-        public int QtdeSaidaProduto { get; set; }
-
+        public Saida() => Produto = new Produto();
+        public Produto Produto { get; set; }
+        public int QtdeSaida { get; set; }
     }
 }

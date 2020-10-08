@@ -34,6 +34,7 @@ namespace ControledeEstoqueWPF.Views
                 {
                     Nome = txtNome.Text,
                     Quantidade = Convert.ToInt32(txtQuantidade.Text),
+                    Categoria = txtCategoria.Text,
                     Tipo = txtTipo.Text
                 };
                 if (ProdutoDAO.Cadastrar(produto))
@@ -56,6 +57,7 @@ namespace ControledeEstoqueWPF.Views
             txtId.Clear();
             txtNome.Clear();
             txtQuantidade.Clear();
+            txtCategoria.Clear();
             txtTipo.Clear();
             txtCriadoEm.Clear();
             txtNome.Focus();
@@ -78,6 +80,7 @@ namespace ControledeEstoqueWPF.Views
                     txtId.Text = produto.Id.ToString();
                     txtNome.Text = produto.Nome;
                     txtQuantidade.Text = produto.Quantidade.ToString();
+                    txtCategoria.Text = produto.Categoria;
                     txtTipo.Text = produto.Tipo;
                     txtCriadoEm.Text = produto.CriadoEm.ToString();
                 }
@@ -123,6 +126,7 @@ namespace ControledeEstoqueWPF.Views
             {
                 produto.Nome = txtNome.Text;
                 produto.Quantidade = Convert.ToInt32(txtQuantidade.Text);
+                produto.Categoria = txtCategoria.Text;
                 produto.Tipo = txtTipo.Text;
                 ProdutoDAO.Alterar(produto);
                 MessageBox.Show("Alteração do produto foi efetivada!", "Controle de Estoque WPF",
